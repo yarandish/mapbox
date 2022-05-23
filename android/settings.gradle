@@ -7,3 +7,24 @@ if (settings.hasProperty("newArchEnabled") && settings.newArchEnabled == "true")
     include(":ReactAndroid")
     project(":ReactAndroid").projectDir = file('../node_modules/react-native/ReactAndroid')
 }
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+          url 'https://api.mapbox.com/downloads/v2/releases/maven'
+          authentication {
+            basic(BasicAuthentication)
+          }
+          credentials {
+            // Do not change the username below.
+            // This should always be `mapbox` (not your username).
+            username = "mapbox"
+            // Use the secret token you stored in gradle.properties as the password
+            password = "sk.eyJ1IjoieWFyYW5kaXNoIiwiYSI6ImNsM2lxZDdvNDAxM2Yza3BpanF6Nmk3NGQifQ.OgQPB4YEYsIe8WJkSjw8Pg"
+          }
+        }
+    }
+}
